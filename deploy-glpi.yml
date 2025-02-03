@@ -145,3 +145,6 @@
         name: apache2
         enabled: yes
         state: restarted
+
+    - name: Activer le module PHP-FPM dans Apache
+      ansible.builtin.command: a2enmod proxy_fcgi setenvif
