@@ -148,3 +148,6 @@
 
     - name: Activer le module PHP-FPM dans Apache
       ansible.builtin.command: a2enmod proxy_fcgi setenvif
+
+    - name: Activer la configuration PHP 8.2-FPM
+      ansible.builtin.command: a2enconf php8.2-fpm
