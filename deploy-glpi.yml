@@ -60,3 +60,11 @@
         login_user: root
         login_password: "{{ db_root_password }}"
         query: "SELECT 1;"
+
+
+    - name: Créer la base de données GLPI
+      community.mysql.mysql_db:
+        name: "{{ db_glpi_name }}"
+        state: present
+        login_user: root
+        login_password: "{{ db_root_password }}"
