@@ -68,3 +68,14 @@
         state: present
         login_user: root
         login_password: "{{ db_root_password }}"
+
+    - name: Créer l’utilisateur GLPI
+      community.mysql.mysql_user:
+        name: "{{ db_glpi_user }}"
+        password: "{{ db_glpi_password }}"
+        priv: "{{ db_glpi_name }}.*:ALL"
+        host: localhost
+        state: present
+        login_user: root
+        login_password: "{{ db_root_password }}"
+        column_case_sensitive: false
