@@ -118,3 +118,8 @@
         mode: "0755"
         state: directory
         recurse: yes
+
+    - name: Supprimer (au cas où) /var/www/html/glpi/config s’il reste un dossier vide
+      ansible.builtin.file:
+        path: "/var/www/html/glpi/config"
+        state: absent
