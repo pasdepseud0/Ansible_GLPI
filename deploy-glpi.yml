@@ -36,3 +36,8 @@
       register: mariadb_auth
       changed_when: false
       failed_when: mariadb_auth.rc != 0 and 'Access denied' not in mariadb_auth.stderr
+
+    - name: Désactiver unix_socket pour root si activé
+      ansible.builtin.command: "mysql -u root --socket=/run/mysqld/mysqld.sock -e 'ALTER USER \"root\"@\"localhost\" IDENTIFIED WITH mysql_native_password BY \"{{ db_root_password }}\";'"
+      when: "'unix_socket' in mariadb_auth.stdout"
+      ignore_errors: yes
