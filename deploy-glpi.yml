@@ -30,3 +30,9 @@
           - php-ldap
         state: present
         update_cache: yes
+
+    - name: Vérifier si MariaDB utilise unix_socket
+      ansible.builtin.command: "mysql -u root -e \"SELECT plugin FROM mysql.user WHERE User='root';\""
+      register: mariadb_auth
+      changed_when: false
+      failed_when: mariadb_auth.rc != 0 and 'Access denied' not in mariadb_auth.stderr
