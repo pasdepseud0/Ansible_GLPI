@@ -90,3 +90,12 @@
         src: "/tmp/glpi.tgz"
         dest: "/var/www/html/"
         remote_src: yes
+
+    - name: Définir les permissions sur GLPI (récursif)
+      ansible.builtin.file:
+        path: "/var/www/html/glpi/"
+        owner: www-data
+        group: www-data
+        mode: "0755"
+        state: directory
+        recurse: yes
