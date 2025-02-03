@@ -46,3 +46,11 @@
       ansible.builtin.systemd:
         name: mariadb
         state: restarted
+
+    - name: Définir le mot de passe root de MariaDB
+      community.mysql.mysql_user:
+        name: root
+        password: "{{ db_root_password }}"
+        login_unix_socket: /run/mysqld/mysqld.sock
+        column_case_sensitive: true
+        state: present
