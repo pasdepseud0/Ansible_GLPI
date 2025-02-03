@@ -151,3 +151,14 @@
 
     - name: Activer la configuration PHP 8.2-FPM
       ansible.builtin.command: a2enconf php8.2-fpm
+
+
+    - name: Redémarrer Apache
+      ansible.builtin.systemd:
+        name: apache2
+        state: restarted
+
+    - name: Redémarrer PHP-FPM
+      ansible.builtin.systemd:
+        name: php8.2-fpm
+        state: restarted
