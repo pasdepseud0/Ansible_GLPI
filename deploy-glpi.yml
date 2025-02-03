@@ -1,0 +1,6 @@
+---
+- name: Déployer et configurer GLPI
+  hosts: web
+  become: yes
+  vars_files:
+    - vault.yaml
