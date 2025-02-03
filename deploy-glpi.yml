@@ -131,3 +131,11 @@
         owner: www-data
         group: www-data
         state: link
+
+    - name: Créer le dossier de logs de GLPI
+      ansible.builtin.file:
+        path: "/var/log/glpi"
+        owner: www-data
+        group: www-data
+        mode: "0755"
+        state: directory
