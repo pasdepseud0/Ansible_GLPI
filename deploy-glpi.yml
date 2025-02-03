@@ -108,3 +108,13 @@
     - name: Déplacer la configuration de GLPI
       ansible.builtin.command: mv /var/www/html/glpi/config /etc/glpi
       when: not config_dir.stat.exists
+
+
+    - name: Assigner les permissions au dossier de configuration (récursif)
+      ansible.builtin.file:
+        path: "/etc/glpi"
+        owner: www-data
+        group: www-data
+        mode: "0755"
+        state: directory
+        recurse: yes
