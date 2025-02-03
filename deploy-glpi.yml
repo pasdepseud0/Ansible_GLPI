@@ -104,3 +104,7 @@
       ansible.builtin.stat:
         path: "/etc/glpi/config"
       register: config_dir
+
+    - name: Déplacer la configuration de GLPI
+      ansible.builtin.command: mv /var/www/html/glpi/config /etc/glpi
+      when: not config_dir.stat.exists
