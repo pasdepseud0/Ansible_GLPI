@@ -84,3 +84,9 @@
       get_url:
         url: "https://github.com/glpi-project/glpi/releases/download/10.0.10/glpi-10.0.10.tgz"
         dest: "/tmp/glpi.tgz"
+
+    - name: Extraire GLPI dans /var/www/html
+      ansible.builtin.unarchive:
+        src: "/tmp/glpi.tgz"
+        dest: "/var/www/html/"
+        remote_src: yes
