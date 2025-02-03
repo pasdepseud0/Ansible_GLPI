@@ -4,3 +4,29 @@
   become: yes
   vars_files:
     - vault.yaml
+
+  tasks:
+    - name: Installer les paquets requis
+      apt:
+        name:
+          - apache2
+          - php
+          - php8.2-fpm
+          - mariadb-server
+          - mariadb-client
+          - python3-pymysql
+          - php-xml
+          - php-common
+          - php-json
+          - php-mysql
+          - php-mbstring
+          - php-curl
+          - php-gd
+          - php-intl
+          - php-zip
+          - php-bz2
+          - php-imap
+          - php-apcu
+          - php-ldap
+        state: present
+        update_cache: yes
