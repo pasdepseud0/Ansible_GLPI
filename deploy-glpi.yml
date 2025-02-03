@@ -123,3 +123,11 @@
       ansible.builtin.file:
         path: "/var/www/html/glpi/config"
         state: absent
+
+    - name: Créer un lien symbolique /var/www/html/glpi/config -> /etc/glpi
+      ansible.builtin.file:
+        src: "/etc/glpi"
+        dest: "/var/www/html/glpi/config"
+        owner: www-data
+        group: www-data
+        state: link
