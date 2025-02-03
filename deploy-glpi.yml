@@ -99,3 +99,8 @@
         mode: "0755"
         state: directory
         recurse: yes
+
+    - name: Vérifier si /etc/glpi/config existe déjà
+      ansible.builtin.stat:
+        path: "/etc/glpi/config"
+      register: config_dir
