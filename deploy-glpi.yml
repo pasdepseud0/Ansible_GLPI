@@ -79,3 +79,8 @@
         login_user: root
         login_password: "{{ db_root_password }}"
         column_case_sensitive: false
+
+    - name: Télécharger GLPI
+      get_url:
+        url: "https://github.com/glpi-project/glpi/releases/download/10.0.10/glpi-10.0.10.tgz"
+        dest: "/tmp/glpi.tgz"
