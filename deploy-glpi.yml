@@ -139,3 +139,9 @@
         group: www-data
         mode: "0755"
         state: directory
+
+    - name: Activer et redémarrer Apache et PHP
+      ansible.builtin.systemd:
+        name: apache2
+        enabled: yes
+        state: restarted
